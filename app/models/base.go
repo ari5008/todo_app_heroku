@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"todo_app_heroku/config"
 
 	"github.com/google/uuid"
 	"github.com/lib/pq"
@@ -16,56 +15,27 @@ var Db *sql.DB
 
 var err error
 
-/*
-const (
-	tableNameUser    = "users"
-	tableNameTodo    = "todos"
-	tableNameSession = "sessions"
-)
-*/
-
 func init() {
-
 	url := os.Getenv("DATABASE_URL")
-	connection, _ := pq.ParseURL(url)
-	connection += "sslmode=require"
-	Db, err = sql.Open(config.Config.SQLDriver, connection)
-	if err != nil {
-		log.Fatalln(err)
+	if url == "" {
+			log.Fatal("DATABASE_URL environment variable is not set")
 	}
-	/*
-		Db, err = sql.Open(config.Config.SQLDriver, config.Config.DbName)
-		if err != nil {
-			log.Fatalln(err)
-		}
 
-		cmdU := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			uuid STRING NOT NULL UNIQUE,
-			name STRING,
-			email STRING,
-			password STRING,
-			created_at DATETIME)`, tableNameUser)
+	conn, err := pq.ParseURL(url)
+	if err != nil {
+			log.Fatalf("Failed to parse DATABASE_URL: %s", err)
+	}
 
-		Db.Exec(cmdU)
+	conn += " sslmode=require"
 
-		cmdT := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			content TEXT,
-			user_id INTEGER,
-			created_at DATETIME)`, tableNameTodo)
+	Db, err = sql.Open("postgres", conn)
+	if err != nil {
+			log.Fatalf("Failed to connect to database: %s", err)
+	}
 
-		Db.Exec(cmdT)
-
-		cmdS := fmt.Sprintf(`CREATE TABLE IF NOT EXISTS %s(
-			id INTEGER PRIMARY KEY AUTOINCREMENT,
-			uuid STRING NOT NULL UNIQUE,
-			email STRING,
-			user_id INTEGER,
-			created_at DATETIME)`, tableNameSession)
-
-		Db.Exec(cmdS)
-	*/
+	if err := Db.Ping(); err != nil {
+			log.Fatalf("Failed to ping database: %s", err)
+	}
 }
 
 func createUUID() (uuidobj uuid.UUID) {
