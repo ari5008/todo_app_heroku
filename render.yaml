@@ -1,0 +1,19 @@
+services:
+  - name: web
+    env:
+      - key: DATABASE_URL
+        value: postgres://todo_g90q_user:Ag7d34mrt21xR0rCpTaAABesqFLk6uq0@dpg-cgb70bg2qv267ufgqarg-a:5432/todo_g90q
+      - key: APP_CONFIG_FILE
+        value: ./config.ini  
+    buildCommand: go build -o ./bin/web ./main.go
+    startCommand: ./bin/web
+    healthCheckPath: /healthz
+  - name: postgres
+    plan: postgresql
+    env:
+      - key: PGUSER
+        value: todo_g90q_user
+      - key: PGPASSWORD
+        value: Ag7d34mrt21xR0rCpTaAABesqFLk6uq0
+      - key: PGDATABASE
+        value: todo_g90q
