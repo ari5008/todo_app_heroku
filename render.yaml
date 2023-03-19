@@ -17,3 +17,7 @@ services:
         value: Ag7d34mrt21xR0rCpTaAABesqFLk6uq0
       - key: PGDATABASE
         value: todo_g90q
+      - key: PGPORT
+        value: 5432
+      -key: PGHOSTNAME
+        value: dpg-cgb70bg2qv267ufgqarg-a
