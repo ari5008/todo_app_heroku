@@ -1,13 +1,12 @@
 services:
   - name: web
+    buildCommand: go build -o ./bin/app
+    startCommand: ./bin/app
     env:
-      - key: DATABASE_URL
-        value: postgres://todo_g90q_user:Ag7d34mrt21xR0rCpTaAABesqFLk6uq0@dpg-cgb70bg2qv267ufgqarg-a:5432/todo_g90q
-      - key: APP_CONFIG_FILE
-        value: ./config.ini  
-    buildCommand: go build -o ./bin/web ./main.go
-    startCommand: ./bin/web
-    healthCheckPath: /healthz
+      DATABASE_URL: ${{ secrets.RENDER_POSTGRES_URL }}
+      APP_CONFIG_FILE: config/production.ini
+    databaseUrl:
+      value: ${DATABASE_URL}?sslmode=require
   - name: postgres
     plan: postgresql
     env:
