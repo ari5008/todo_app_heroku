@@ -26,7 +26,7 @@ func init() {
 			log.Fatalf("Failed to parse DATABASE_URL: %s", err)
 	}
 
-	conn += " sslmode=require"
+	conn += " sslmode=require1"
 
 	Db, err = sql.Open("postgres", conn)
 	if err != nil {
