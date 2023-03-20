@@ -1,4 +1,4 @@
-module todo_postgres_app
+module todo_postgresql_app
 
 go 1.18
 

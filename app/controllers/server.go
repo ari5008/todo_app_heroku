@@ -7,8 +7,8 @@ import (
 	"os"
 	"regexp"
 	"strconv"
-	"todo_postgres_app/app/models"
-	"todo_postgres_app/config"
+	"todo_postgresql_app/app/models"
+	"todo_postgresql_app/config"
 )
 
 func generateHTML(w http.ResponseWriter, data interface{}, filenames ...string) {

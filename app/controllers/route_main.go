@@ -3,7 +3,7 @@ package controllers
 import (
 	"log"
 	"net/http"
-	"todo_postgres_app/app/models"
+	"todo_postgresql_app/app/models"
 )
 
 func top(w http.ResponseWriter, r *http.Request) {

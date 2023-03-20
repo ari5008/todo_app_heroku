@@ -2,7 +2,7 @@ package config
 
 import (
 	"log"
-	"todo_postgres_app/utils"
+	"todo_postgresql_app/utils"
 
 	"gopkg.in/go-ini/ini.v1"
 )

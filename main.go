@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	
-	"todo_postgres_app/app/controllers"
-	"todo_postgres_app/app/models"
+	"todo_postgresql_app/app/controllers"
+	"todo_postgresql_app/app/models"
 )
 
 func main() {
