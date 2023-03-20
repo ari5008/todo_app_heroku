@@ -1,4 +1,4 @@
-module todo_app_heroku
+module todo_postgres_app
 
 go 1.18
 

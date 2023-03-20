@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"todo_app_heroku/app/controllers"
-	"todo_app_heroku/app/models"
+	
+	"todo_postgres_app/app/controllers"
+	"todo_postgres_app/app/models"
 )
 
 func main() {
