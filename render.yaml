@@ -1,22 +1,22 @@
 services:
   - name: web
-    buildCommand: go build -o ./bin/app
+    buildCommand: go build -o ./bin/app main.go
     startCommand: ./bin/app
     env:
       DATABASE_URL: ${{ secrets.RENDER_POSTGRES_URL }}
-      APP_CONFIG_FILE: config/production.ini
+      APP_CONFIG_FILE: ./config.ini
     databaseUrl:
-      value: postgres://todo_g90q_user:Ag7d34mrt21xR0rCpTaAABesqFLk6uq0@dpg-cgb70bg2qv267ufgqarg-a:5432/todo_g90q?sslmode=require
+      value: postgres://test_db_uv3e_user:Yi1r1PbjAHfof7oyZAIPAp7GpB0cwBcV@dpg-cgbqss82qv267ua2g2m0-a:5432/test_db_uv3e?sslmode=require
   - name: postgres
     plan: postgresql
     env:
       - key: PGUSER
-        value: todo_g90q_user
+        value: test_db_uv3e_user
       - key: PGPASSWORD
-        value: Ag7d34mrt21xR0rCpTaAABesqFLk6uq0
+        value: Yi1r1PbjAHfof7oyZAIPAp7GpB0cwBcV
       - key: PGDATABASE
-        value: todo_g90q
+        value: test_db_uv3e
       - key: PGPORT
         value: 5432
       -key: PGHOSTNAME
-        value: dpg-cgb70bg2qv267ufgqarg-a
+        value: dpg-cgbqss82qv267ua2g2m0-a
