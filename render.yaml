@@ -6,12 +6,12 @@ services:
       DATABASE_URL: ${{ secrets.RENDER_POSTGRES_URL }}
       APP_CONFIG_FILE: ./config.ini
     databaseUrl:
-      value: postgres://postgres:Yi1r1PbjAHfof7oyZAIPAp7GpB0cwBcV@dpg-cgbqss82qv267ua2g2m0-a:5432/test_db_uv3e
+      value: postgres://test_db_uv3e_user:Yi1r1PbjAHfof7oyZAIPAp7GpB0cwBcV@dpg-cgbqss82qv267ua2g2m0-a:5432/test_db_uv3e
   - name: postgres
     plan: postgresql
     env:
       - key: PGUSER
-        value: postgres
+        value: test_db_uv3e_user
       - key: PGPASSWORD
         value: Yi1r1PbjAHfof7oyZAIPAp7GpB0cwBcV
       - key: PGDATABASE
