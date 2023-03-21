@@ -10,16 +10,11 @@ services:
   - name: postgresql
     plan: postgresql
     env:
-      - key: PGUSER
-        value: test_user
-      - key: PGPASSWORD
-        value: TTDr2OVCOad0S03pWG2TN41jNlXi2BdZ
-      - key: PGDATABASE
-        value: test_db_uw61
-      - key: PGPORT
-        value: 5432
-      -key: PGHOSTNAME
-        value: dpg-cgchesvdvk4htnvp7e40-a
+      PGUSER: test_user
+      PGPASSWORD: TTDr2OVCOad0S03pWG2TN41jNlXi2BdZ
+      PGDATABASE: test_db_uw61
+      PGPORT: 5432
+      PGHOSTNAME: dpg-cgchesvdvk4htnvp7e40-a
     files:
       - name: example.sql
         path: ./example.sql
